@@ -1,0 +1,61 @@
+# ─────────────────────────────────────────────────────────────────────
+#  Promptly — Smart Reminder Assistant
+#  requirements.txt
+#
+#  Install all dependencies:
+#      pip install -r requirements.txt
+#
+#  Build standalone .exe (Windows only):
+#      pyinstaller Promptly.spec
+# ─────────────────────────────────────────────────────────────────────
+
+
+# ── Core UI Framework ─────────────────────────────────────────────────
+# PyQt6 — Qt 6 bindings for Python. Provides the entire GUI:
+# system tray icon, dashboard window, dialogs, widgets, stylesheets.
+# Minimum version 6.4.0 required for QDateTimeEdit calendar popup fix.
+PyQt6>=6.4.0
+
+
+# ── Windows Native Notifications ─────────────────────────────────────
+# windows-toasts — sends native Windows 10/11 toast notifications
+# via the WinRT API. Displays reminder alerts in the Action Center.
+# If not installed, Promptly falls back to Qt balloon tray messages.
+# Only required on Windows. Safe to omit on other platforms.
+windows-toasts>=1.0.0
+
+
+# ── Build Tool (compile to .exe) ──────────────────────────────────────
+# PyInstaller — packages Promptly.py and all dependencies into a
+# single self-contained Promptly.exe. No Python runtime needed on
+# the target machine.
+# Usage: pyinstaller Promptly.spec
+pyinstaller>=5.13.0
+
+
+# ─────────────────────────────────────────────────────────────────────
+#  STANDARD LIBRARY MODULES USED (no install needed)
+#  Listed here for documentation purposes only.
+#
+#  base64   — decodes the embedded .ico icon at runtime
+#  heapq    — priority queue powering the O(log n) scheduler engine
+#  json     — reads/writes data.json (reminder persistence)
+#  os       — file path resolution, atomic tmp→replace save
+#  struct   — ICO file format packing (icon generation script)
+#  sys      — application entry point, frozen-exe path detection
+#  uuid     — generates unique reminder IDs (UUID4)
+#  datetime — UTC timestamp arithmetic, DST-safe scheduling
+#  enum     — AppState machine (RUNNING/PAUSED/SHUTTING_DOWN/RECOVERING)
+#  typing   — type hints (Optional, List, Dict)
+# ─────────────────────────────────────────────────────────────────────
+
+
+# ─────────────────────────────────────────────────────────────────────
+#  DEVELOPMENT / ICON GENERATION ONLY
+#  Only needed if you regenerate the icon from source.
+#  NOT required to run or build Promptly.
+#
+#  Pillow>=10.0.0   — used by the icon generation script to draw the
+#                     bell+lightning bitmap at 7 resolutions and pack
+#                     them into a multi-frame .ico file.
+# ─────────────────────────────────────────────────────────────────────
